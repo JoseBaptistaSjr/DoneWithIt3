@@ -17,4 +17,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Screen;
+export default Screen; 
