@@ -1,5 +1,5 @@
-import React from 'react';
-import { View } from 'react-native';
+import React, { useState } from 'react';
+import { Switch, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import AppButton from './app/components/AppButton';
@@ -14,11 +14,18 @@ import ListItem from './app/components/ListItem';
 import AccountScreen from './app/screens/AccountScreen';
 import ListingsScreen from './app/screens/ListingsScreen';
 import AppTextInput from './app/components/AppTextInput';
+import AppPicker from './app/components/AppPicker';
 
 export default function App() {
+  const [isEnabled, setIsEnabled] = useState(false);
+
+
   return (
     <GestureHandlerRootView>
-      <AppTextInput placeholder="Email" icon="email" />
+      <Screen>
+        <AppPicker icon="apps" placeholder='Category'/>
+        <AppTextInput icon="email" placeholder='Email'/>
+      </Screen>
     </GestureHandlerRootView>
   );
 }
