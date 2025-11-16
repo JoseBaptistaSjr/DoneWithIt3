@@ -1,12 +1,12 @@
 import React from "react";
-import { View, StyleSheet, Platform, TextInput, StatusBar } from "react-native";
+import { View, StyleSheet, TextInput } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import defaultStyles from "../config/styles";
 
-function AppTextInput({ icon, ...otherProps }) {
+function AppTextInput({ icon, width = "100%", ...otherProps }) {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { width }]}>
       {icon && (
         <MaterialCommunityIcons
           name={icon}
@@ -29,10 +29,8 @@ const styles = StyleSheet.create({
     backgroundColor: defaultStyles.colors.light,
     borderRadius: 25,
     flexDirection: "row",
-    width: "100%",
     padding: 15,
-    marginVertical: 20,
-    marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    marginVertical: 10,
   },
   icon: {
     marginRight: 10,

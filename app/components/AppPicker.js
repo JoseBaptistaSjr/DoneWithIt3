@@ -2,9 +2,6 @@ import React from "react";
 import {
   View,
   StyleSheet,
-  Platform,
-  TextInput,
-  StatusBar,
   TouchableWithoutFeedback,
   Modal,
   Button,
@@ -18,13 +15,21 @@ import AppText from "./AppText";
 import Screen from "./Screen";
 import PickerItem from "./PickerItem";
 
-function AppPicker({ icon, items, onSelectItem, placeholder, selectedItem }) {
+function AppPicker({
+  icon,
+  items,
+  onSelectItem,
+  PickerItemComponent = PickerItem,
+  placeholder,
+  selectedItem,
+  width = "100%",
+}) {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
-        <View style={styles.container}>
+        <View style={[styles.container, { width }]}>
           {icon && (
             <MaterialCommunityIcons
               name={icon}
@@ -52,7 +57,7 @@ function AppPicker({ icon, items, onSelectItem, placeholder, selectedItem }) {
             data={items}
             keyExtractor={(item) => item.value.toString()}
             renderItem={({ item }) => (
-              <PickerItem
+              <PickerItemComponent
                 label={item.label}
                 onPress={() => {
                   setModalVisible(false);
@@ -72,10 +77,9 @@ const styles = StyleSheet.create({
     backgroundColor: defaultStyles.colors.light,
     borderRadius: 25,
     flexDirection: "row",
-    width: "100%",
     padding: 15,
-    marginVertical: 20,
-    marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    marginVertical: 10,
+    alignItems: "center",
   },
   icon: {
     marginRight: 10,
