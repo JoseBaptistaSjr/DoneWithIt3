@@ -11,7 +11,7 @@ import ListingsScreen from "./app/screens/ListingsScreen";
 export default function App() {
   return (
     <GestureHandlerRootView>
-      <MessagesScreen />
+      <ListingEditScreen />
     </GestureHandlerRootView>
   );
 }
