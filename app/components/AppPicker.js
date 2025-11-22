@@ -29,7 +29,11 @@ function AppPicker({
 
   return (
     <>
-      <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
+      <TouchableWithoutFeedback
+        onPress={() => {
+          setModalVisible(true);
+        }}
+      >
         <View style={[styles.container, { width }]}>
           {icon && (
             <MaterialCommunityIcons
